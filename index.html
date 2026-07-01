@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hera — La experiencia no tiene fecha de vencimiento</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --surface: #F2EDE4;
+    --gold: #E85D3A;
+    --gold-light: #F07A5A;
+    --gold-dim: rgba(232,93,58,0.1);
+    --terra: #4A7C6B;
+    --terra-dim: rgba(74,124,107,0.1);
+    --accent3: #D4A017;
+    --accent3-dim: rgba(212,160,23,0.12);
+    --text: #1A1208;
+    --muted: #8A7E6E;
+    --border: #E0D8CC;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,247,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(232,93,58,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 70%, rgba(74,124,107,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 30% 40% at 50% 20%, rgba(212,160,23,0.05) 0%, transparent 60%);
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .hero-eyebrow span { color: var(--gold); }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 580px;
+    margin: 0 auto 3.5rem;
+    font-weight: 300;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* GAP VISUALIZER — Signature Element */
+  .gap-section {
+    padding: 8rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .gap-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .gap-title em { font-style: italic; color: var(--terra); }
+
+  .gap-subtitle {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 560px;
+    margin-bottom: 5rem;
+    font-weight: 300;
+  }
+
+  /* Timeline visual */
+  .timeline {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .timeline-track {
+    height: 2px;
+    background: var(--border);
+    position: relative;
+    margin: 3rem 0;
+  }
+
+  .timeline-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--terra));
+    width: 0%;
+    transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .timeline-fill.animated { width: 55%; }
+
+  .timeline-markers {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .t-marker {
+    text-align: center;
+    position: relative;
+  }
+
+  .t-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    margin: 0 auto 0.75rem;
+    transition: background 0.5s;
+  }
+
+  .t-dot.active { background: var(--gold); box-shadow: 0 0 12px rgba(232,93,58,0.4); }
+  .t-dot.gap { background: var(--terra); box-shadow: 0 0 12px rgba(74,124,107,0.4); }
+
+  .t-age {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    display: block;
+  }
+
+  .t-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  .gap-label {
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(74,124,107,0.1);
+    border: 1px solid rgba(74,124,107,0.3);
+    color: var(--terra);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s 1.5s;
+  }
+
+  .gap-label.visible { opacity: 1; }
+
+  /* STATS */
+  .stats-section {
+    padding: 6rem 4rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .stat {
+    background: var(--surface);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--stat-color, var(--gold));
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--stat-color, var(--gold));
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .stat-label strong { color: var(--text); display: block; margin-bottom: 0.25rem; font-size: 0.95rem; }
+
+  /* HOW IT WORKS */
+  .how-section {
+    padding: 8rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 4rem;
+  }
+
+  .how-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .how-step:first-child { border-top: 1px solid var(--border); }
+  .how-step:hover .step-title { color: var(--gold); }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 3rem;
+    transition: color 0.2s;
+  }
+
+  .how-step:hover .step-num { color: rgba(232,93,58,0.2); }
+
+  .step-content {}
+  .step-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .step-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .how-visual {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,18,8,0.06);
+  }
+
+  .how-visual::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(232,93,58,0.06) 0%, transparent 65%);
+  }
+
+  .match-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .match-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+    transition: border-color 0.3s;
+    box-shadow: 0 2px 8px rgba(26,18,8,0.04);
+  }
+
+  .match-card.highlighted { border-color: var(--gold); background: rgba(232,93,58,0.03); }
+
+  .match-card-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .match-card-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .match-card-detail {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .match-arrow {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(3px); }
+  }
+
+  .match-tag {
+    display: inline-block;
+    background: var(--gold-dim);
+    color: var(--gold);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  /* FOR WHO */
+  .who-section {
+    padding: 8rem 4rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .who-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 4rem;
+  }
+
+  .who-card {
+    background: var(--surface);
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .who-card:hover { background: var(--white); box-shadow: 0 4px 20px rgba(26,18,8,0.08); }
+
+  .who-icon {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .who-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .who-card p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .who-badge {
+    display: inline-block;
+    background: var(--who-color, var(--gold-dim));
+    color: var(--who-accent, var(--gold));
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  /* VALIDATION */
+  .validation-section {
+    padding: 8rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .validation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .val-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .val-card:hover { border-color: rgba(201,168,76,0.3); }
+
+  .val-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: 0.15;
+    position: absolute;
+    top: 0.5rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+
+  .val-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+  }
+
+  .val-source {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .val-source strong { color: var(--gold); }
+
+  .val-highlight {
+    grid-column: 1 / -1;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .val-big-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .val-big-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .val-big-text strong { color: var(--gold); }
+
+  /* CTA FINAL */
+  .cta-section {
+    padding: 10rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(232,93,58,0.07) 0%, rgba(74,124,107,0.04) 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .cta-section h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .cta-section p {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .gap-section, .how-section, .validation-section, .cta-section { padding: 5rem 1.5rem; }
+    .stats-section, .who-section { padding: 4rem 1.5rem; }
+    .stats-inner, .who-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .validation-grid { grid-template-columns: 1fr; }
+    .val-highlight { flex-direction: column; gap: 1rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .timeline-markers { gap: 0; }
+    .t-age { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Hera</div>
+  <a href="#contacto" class="nav-cta">Conectar ahora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span>Marketplace</span> · IA · Impacto Social · LATAM</div>
+    <h1>
+      La experiencia
+      <em>no tiene fecha</em>
+      de vencimiento.
+    </h1>
+    <p class="hero-sub">
+      Conectamos mujeres de 50+ con <strong>décadas de experiencia real</strong> con startups y empresas que necesitan ese conocimiento — exactamente cuando lo necesitan, en los términos que ellas eligen.
+    </p>
+    <div class="hero-actions">
+      <a href="#como-funciona" class="btn-primary">Ver cómo funciona</a>
+      <a href="#validacion" class="btn-secondary">Ver validación</a>
+    </div>
+  </div>
+</section>
+
+<!-- GAP VISUALIZER — Signature element -->
+<section class="gap-section reveal">
+  <div class="section-label">El problema</div>
+  <h2 class="gap-title">El mercado jubila el talento.<br><em>Nosotras lo redimimos.</em></h2>
+  <p class="gap-subtitle">Una mujer se pensiona a los 57 años. Vivirá hasta los 83 en promedio. Son <strong style="color:var(--terra);">26 años productivos</strong> que el sistema descarta. Y no es solo tiempo perdido — es una crisis económica real: la mesada pensional promedio cubre menos del 40% de sus gastos. En Colombia, <strong style="color:var(--terra);">el 40% de los hogares son uniparentales y están liderados por mujeres.</strong> Ellas no pueden darse el lujo de pensionarse del todo. El mercado las dejó sin opciones. Nosotras las creamos.</p>
+
+  <div class="timeline">
+    <div class="timeline-markers">
+      <div class="t-marker">
+        <div class="t-dot active" id="dot1"></div>
+        <span class="t-age">25</span>
+        <span class="t-label">Comienza carrera</span>
+      </div>
+      <div class="t-marker">
+        <div class="t-dot active" id="dot2"></div>
+        <span class="t-age">45</span>
+        <span class="t-label">Peak de expertise</span>
+      </div>
+      <div class="t-marker" style="position: relative;">
+        <div class="t-dot gap" id="dot3"></div>
+        <span class="t-age" style="color: var(--terra);">57</span>
+        <span class="t-label" style="color: var(--terra);">El mercado la jubila</span>
+        <div class="gap-label" id="gapLabel">↔ 25+ años productivos perdidos</div>
+      </div>
+      <div class="t-marker">
+        <div class="t-dot" id="dot4"></div>
+        <span class="t-age" style="color: var(--muted);">80+</span>
+        <span class="t-label">Potencial real</span>
+      </div>
+    </div>
+    <div class="timeline-track">
+      <div class="timeline-fill" id="timelineFill"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section reveal">
+  <div class="stats-inner">
+    <div class="stat" style="--stat-color: var(--gold);">
+      <span class="stat-num">26</span>
+      <div class="stat-label">
+        <strong>Años productivos desperdiciados</strong>
+        entre la pensión a los 57 y la expectativa de vida real de 83 años. Décadas de experiencia que el mercado descarta.
+      </div>
+    </div>
+    <div class="stat" style="--stat-color: var(--terra);">
+      <span class="stat-num">40%</span>
+      <div class="stat-label">
+        <strong>Hogares uniparentales en Colombia</strong>
+        liderados por mujeres. La pensión no alcanza. Necesitan ingresos flexibles, no caridad.
+      </div>
+    </div>
+    <div class="stat" style="--stat-color: #7ABFB5;">
+      <span class="stat-num">-60%</span>
+      <div class="stat-label">
+        <strong>Caída en ingresos al pensionarse</strong>
+        La pensión promedio cubre menos del 40% de los gastos reales. El gap financiero es inmediato y urgente.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIG ECONOMY OPPORTUNITY -->
+<section class="gap-section reveal" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); max-width: 100%; padding: 7rem 4rem;">
+  <div style="max-width: 1000px; margin: 0 auto;">
+    <div class="section-label">La oportunidad</div>
+    <h2 class="gap-title" style="margin-bottom: 1.5rem;">La economía <em>gig</em> llegó justo a tiempo.</h2>
+    <p class="gap-subtitle" style="margin-bottom: 4rem;">El mundo del trabajo ya cambió. Ahora necesitamos que cambie para ellas también.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border);">
+      <div style="background: var(--surface); padding: 2.5rem; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold);"></div>
+        <div style="font-size: 2.2rem; margin-bottom: 1rem;">🌐</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">El mercado gig vale $455B</div>
+        <div style="font-size: 0.82rem; color: var(--muted); line-height: 1.8;">La economía de proyectos independientes crece al 15% anual a nivel mundial. Las empresas ya no quieren contratar — quieren acceder. Las mujeres mayores tienen exactamente lo que ese mercado necesita: experiencia sin costos fijos.</div>
+      </div>
+      <div style="background: var(--surface); padding: 2.5rem; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--terra);"></div>
+        <div style="font-size: 2.2rem; margin-bottom: 1rem;">⚡</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">Trabajo en sus términos</div>
+        <div style="font-size: 0.82rem; color: var(--muted); line-height: 1.8;">La economía de trabajos independientes permite laborar por proyectos, desde cualquier lugar, sin horario fijo. Para una mujer de 57 años que lidera su hogar, esa flexibilidad no es un lujo — es la única forma en que el trabajo tiene sentido.</div>
+      </div>
+      <div style="background: var(--surface); padding: 2.5rem; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: #7ABFB5;"></div>
+        <div style="font-size: 2.2rem; margin-bottom: 1rem;">🎯</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">El expertise senior es escaso</div>
+        <div style="font-size: 0.82rem; color: var(--muted); line-height: 1.8;">El 70% de las empresas reporta dificultad para encontrar experiencia senior cuando la necesita. La inteligencia artificial automatizó las tareas — pero concentró la demanda en quienes tienen criterio real. Eso es exactamente lo que tienen las mujeres de 50+.</div>
+      </div>
+      <div style="background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.15); padding: 2.5rem; grid-column: 1 / -1; display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+        <div style="font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 900; color: var(--gold); flex-shrink: 0;">Match<br>perfecto.</div>
+        <div style="font-size: 1rem; line-height: 1.8; color: var(--text);">La economía gig creó la demanda de experiencia flexible. La longevidad creó la oferta de mujeres mayores con décadas de conocimiento y 26 años por delante. <strong style="color: var(--gold);">Nuestra plataforma es la infraestructura que conecta estos dos mundos.</strong> El momento es ahora.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section reveal" id="como-funciona">
+  <div class="section-label">Cómo funciona</div>
+  <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2;">Tres pasos.<br>Un match que cambia vidas.</h2>
+
+  <div class="how-grid">
+    <div class="how-steps">
+      <div class="how-step">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <div class="step-title">La empresa describe su problema</div>
+          <div class="step-desc">No un cargo. Un problema real: "Necesito escalar ventas en el sector salud" o "Mi equipo está en conflicto y no sé cómo resolverlo."</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <div class="step-title">La IA hace el match por experiencia vivida</div>
+          <div class="step-desc">No por keywords. Por situaciones reales resueltas. La experta que ya enfrentó exactamente ese problema antes.</div>
+        </div>
+      </div>
+      <div class="how-step">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <div class="step-title">Proyecto. Resultados. Sin burocracia.</div>
+          <div class="step-desc">30 a 90 días. Entregable concreto. La experta trabaja en sus términos. La empresa paga por resultados, no por horas.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-visual">
+      <div class="match-demo">
+        <div class="match-card highlighted">
+          <div class="match-card-label">Empresa · Startup Tech · 45 personas</div>
+          <div class="match-card-name">Necesita escalar equipo de ventas</div>
+          <div class="match-card-detail">Sin proceso estructurado, perdiendo deals en etapa de cierre</div>
+        </div>
+        <div class="match-arrow">⬇ match inteligente</div>
+        <div class="match-card highlighted">
+          <div class="match-card-label">Experta · 28 años en ventas B2B</div>
+          <div class="match-card-name">Carolina M. — Directora Comercial Senior</div>
+          <div class="match-card-detail">Escaló 3 equipos de ventas en tech desde cero</div>
+          <div><span class="match-tag">Disponible · Proyecto 60 días</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="who-section reveal">
+  <div class="who-inner">
+    <div class="section-label">Para quién</div>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;">Un ecosistema de tres lados.</h2>
+
+    <div class="who-grid">
+      <div class="who-card" style="--who-color: var(--gold-dim); --who-accent: var(--gold);">
+        <span class="who-icon">👩‍💼</span>
+        <h3>Mujeres 50+</h3>
+        <p>Con décadas de experiencia en ventas, recursos humanos, finanzas o derecho. Que quieren seguir aportando — en sus propios términos, sin volver al mundo corporativo.</p>
+        <span class="who-badge">Monetizá tu experiencia</span>
+      </div>
+      <div class="who-card" style="--who-color: rgba(122,191,181,0.12); --who-accent: #7ABFB5;">
+        <span class="who-icon">🚀</span>
+        <h3>Startups y empresas</h3>
+        <p>En crecimiento, con problemas urgentes que ya les cuestan dinero o clientes. Que necesitan expertise senior sin la burocracia de contratar full time.</p>
+        <span class="who-badge" style="background: rgba(122,191,181,0.12); color: #7ABFB5;">Resolvé hoy</span>
+      </div>
+      <div class="who-card" style="--who-color: var(--terra-dim); --who-accent: var(--terra);">
+        <span class="who-icon">🌱</span>
+        <h3>ONGs y comunidades</h3>
+        <p>Que necesitan expertise de alto nivel pero no pueden costear consultoría tradicional. El lado comercial subsidia el acceso social.</p>
+        <span class="who-badge" style="background: var(--terra-dim); color: var(--terra);">Acceso inclusivo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALIDATION -->
+<section class="validation-section reveal" id="validacion">
+  <div class="section-label">Validación</div>
+  <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem;">Ya está pasando.<br><span style="font-style: italic; color: var(--gold); font-weight: 400;">Sin plataforma todavía.</span></h2>
+
+  <div class="validation-grid">
+    <div class="val-highlight">
+      <div class="val-big-num">1°</div>
+      <div class="val-big-text">
+        <strong>Primer match real completado a mano.</strong> Una gerente de tecnología pensionada conectada con una empresa que la contrató para un proyecto — en menos de 48 horas, sin tecnología, solo con nuestra red. La demanda existe en los dos lados.
+      </div>
+    </div>
+
+    <div class="val-card">
+      <p class="val-text">Podría ser por asesorías o proyectos. Quiero seguir siendo productiva pero sin la presión del mundo corporativo.</p>
+      <div class="val-source"><strong>Mujer pensionada · RRHH & Seguridad Social</strong> · 1 año jubilada</div>
+    </div>
+
+    <div class="val-card">
+      <p class="val-text">Buscamos expertise externo en ferias y relaciones. No tenemos un canal estructurado para encontrar a la persona correcta cuando la necesitamos.</p>
+      <div class="val-source"><strong>Director · Empresa 1.100 empleados</strong> · Colombia</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal" id="contacto">
+  <h2>¿Sos parte<br>de esta <em>historia?</em></h2>
+  <p>Si eres una mujer senior con expertise que quieres monetizar, o una empresa con un problema urgente — escríbenos hoy.</p>
+  <div class="cta-actions">
+    <a href="mailto:hola@hera.co" class="btn-primary">Quiero ser experta</a>
+    <a href="mailto:empresas@hera.co" class="btn-secondary">Necesito expertise</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Hera</div>
+  <div class="footer-copy">© 2026 · Rediseñando la economía para que la experiencia no tenga fecha de vencimiento.</div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Timeline animation
+  const timelineObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          document.getElementById('timelineFill').classList.add('animated');
+          document.getElementById('gapLabel').classList.add('visible');
+          document.getElementById('dot4').style.background = 'var(--muted)';
+        }, 300);
+        timelineObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const gapSection = document.querySelector('.gap-section');
+  if (gapSection) timelineObserver.observe(gapSection);
+
+  // Smooth scroll for anchors
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
